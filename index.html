@@ -1,189 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>FlyHigh Travel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>FlyHigh Travel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #1a1f3c;
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1a1f3c;
+  scroll-behavior: smooth;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+header h2 { color: #8ecae6; }
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #1a1f3c;
+  transition: 0.3s;
+}
+
+nav a:hover { color: #8ecae6; }
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(142,202,230,0.5), rgba(255,214,224,0.4)),
+  url("https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 60px;
+  animation: fadeIn 2s ease;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* SECTION */
+.section {
+  padding: 100px 40px;
+  text-align: center;
+}
+
+/* FILTER */
+.filters button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #8ecae6;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button:hover {
+  background: #6bb6d6;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #dff6ff;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 15px;
+}
+
+/* BOOKING */
+.booking {
+  background: #ffd6e0;
+}
+
+.booking input, .booking select {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.booking button {
+  padding: 12px 25px;
+  background: #8ecae6;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.booking button:hover {
+  background: #6bb6d6;
+}
+
+/* CONTACT */
+.contact input, .contact textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* FOOTER */
+footer {
+  background: #1a1f3c;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+</style>
+
+<script>
+function filterDestinations(region) {
+  let cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    if (region === "all" || card.classList.contains(region)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
     }
+  });
+}
+</script>
 
-    /* HEADER */
-    header {
-      background: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 40px;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    header h1 {
-      color: #8ecae6;
-      letter-spacing: 2px;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #1a1f3c;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #8ecae6;
-    }
-
-    /* HERO */
-    .hero {
-      height: 90vh;
-      background: linear-gradient(
-        rgba(142, 202, 230, 0.4),
-        rgba(255, 214, 224, 0.4)
-      ),
-      url("https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg");
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
-
-    .hero h2 {
-      font-size: 50px;
-      letter-spacing: 3px;
-    }
-
-    .hero p {
-      margin-top: 10px;
-      font-size: 18px;
-    }
-
-    .hero a {
-      margin-top: 25px;
-      display: inline-block;
-      padding: 12px 30px;
-      background: white;
-      color: #1a1f3c;
-      text-decoration: none;
-      border-radius: 30px;
-    }
-
-    /* DESTINATIONS */
-    .section {
-      padding: 60px 40px;
-      text-align: center;
-    }
-
-    .section h2 {
-      margin-bottom: 30px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #dff6ff;
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .card h3 {
-      margin-top: 10px;
-    }
-
-    /* CTA */
-    .cta {
-      background: #ffd6e0;
-      padding: 60px;
-      text-align: center;
-    }
-
-    .cta h2 {
-      margin-bottom: 10px;
-    }
-
-    .cta button {
-      padding: 12px 25px;
-      border: none;
-      background: #8ecae6;
-      color: white;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #1a1f3c;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>FlyHigh</h1>
+  <h2>FlyHigh</h2>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Destinations</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#booking">Booking</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero">
+<!-- HERO -->
+<section id="home" class="hero">
   <div>
-    <h2>Explore the World</h2>
-    <p>Travel freely. Discover new places. Live your dream.</p>
-    <a href="#">Start Journey</a>
+    <h1>Fly Beyond Limits</h1>
   </div>
 </section>
 
-<section class="section">
-  <h2>Popular Destinations</h2>
+<!-- DESTINATIONS -->
+<section id="destinations" class="section">
+  <h2>Explore the World</h2>
+
+  <div class="filters">
+    <button onclick="filterDestinations('all')">All</button>
+    <button onclick="filterDestinations('europe')">Europe</button>
+    <button onclick="filterDestinations('asia')">Asia</button>
+    <button onclick="filterDestinations('africa')">Africa</button>
+    <button onclick="filterDestinations('north-america')">North America</button>
+    <button onclick="filterDestinations('south-america')">South America</button>
+  </div>
+
   <div class="cards">
 
-    <div class="card">
-      <img src="https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg">
+    <div class="card europe">
+      <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg">
       <h3>Paris</h3>
     </div>
 
-    <div class="card">
-      <img src="https://images.pexels.com/photos/21014/pexels-photo.jpg">
+    <div class="card asia">
+      <img src="https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg">
       <h3>Maldives</h3>
     </div>
 
-    <div class="card">
-      <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg">
+    <div class="card asia">
+      <img src="https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg">
       <h3>Dubai</h3>
+    </div>
+
+    <div class="card africa">
+      <img src="https://images.pexels.com/photos/667200/pexels-photo-667200.jpeg">
+      <h3>Morocco</h3>
+    </div>
+
+    <div class="card north-america">
+      <img src="https://images.pexels.com/photos/208701/pexels-photo-208701.jpeg">
+      <h3>New York</h3>
+    </div>
+
+    <div class="card north-america">
+      <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg">
+      <h3>Canada</h3>
+    </div>
+
+    <div class="card europe">
+      <img src="https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg">
+      <h3>London</h3>
+    </div>
+
+    <div class="card south-america">
+      <img src="https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg">
+      <h3>Brazil</h3>
     </div>
 
   </div>
 </section>
 
-<section class="cta">
-  <h2>Start Your Journey Today</h2>
-  <p>Book your dream trip with FlyHigh</p>
-  <button>Book Now</button>
+<!-- BOOKING -->
+<section id="booking" class="section booking">
+  <h2>Book Your Trip</h2>
+  <form>
+    <input type="text" placeholder="Destination">
+    <input type="date">
+    <input type="number" placeholder="Guests">
+    <select>
+      <option>Select Package</option>
+      <option>Basic</option>
+      <option>Standard</option>
+      <option>Premium</option>
+    </select>
+    <button>Book Now</button>
+  </form>
+</section>
+
+<!-- VISA -->
+<section class="section" style="background:#dff6ff;">
+  <h2>Visa Support</h2>
+  <p style="max-width:700px;margin:auto;">
+    We provide full visa support for Armenian travelers including Europe, USA, UK, and Canada.
+  </p>
+</section>
+
+<!-- WHY US -->
+<section class="section" style="background:#ffd6e0;">
+  <h2>Why Choose Us</h2>
+  <div class="cards">
+    <div class="card"><h3>🌍 Global Travel</h3></div>
+    <div class="card"><h3>🛂 Visa Help</h3></div>
+    <div class="card"><h3>💼 Trusted</h3></div>
+    <div class="card"><h3>✨ Personalized</h3></div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section">
+  <h2>Packages</h2>
+  <div class="cards">
+    <div class="card"><h3>Basic - $499</h3></div>
+    <div class="card"><h3>Standard - $899</h3></div>
+    <div class="card"><h3>Premium - $1499</h3></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2>About</h2>
+  <p style="max-width:700px;margin:auto;">
+    FlyHigh is an Armenian travel company offering global trips with visa support and premium service.
+  </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact">
+  <h2>Contact</h2>
+  <input type="text" placeholder="Name">
+  <input type="email" placeholder="Email">
+  <textarea placeholder="Message"></textarea>
 </section>
 
 <footer>
