@@ -1,318 +1,105 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>FlyHigh Travel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>FlyHigh Travel</title>
 <style>
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  color: #1a1f3c;
-  scroll-behavior: smooth;
+  font-family: Arial, sans-serif;
+  background-color: #e6f2ff; /* light blue */
+  color: #333;
 }
-
-/* HEADER */
 header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
   background: white;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-header h2 { color: #8ecae6; }
-
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #1a1f3c;
-  transition: 0.3s;
-}
-
-nav a:hover { color: #8ecae6; }
-
-/* HERO */
-.hero {
-  height: 100vh;
-  background: linear-gradient(rgba(142,202,230,0.5), rgba(255,214,224,0.4)),
-  url("https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-}
-
-.hero h1 {
-  font-size: 60px;
-  animation: fadeIn 2s ease;
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* SECTION */
-.section {
-  padding: 100px 40px;
+  padding: 20px;
   text-align: center;
 }
-
-/* FILTER */
-.filters button {
-  margin: 10px;
-  padding: 10px 20px;
-  border: none;
-  background: #8ecae6;
-  color: white;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
+header h1 {
+  color: #ffb6c1; /* light pink */
 }
-
-.filters button:hover {
-  background: #6bb6d6;
-}
-
-/* CARDS */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 25px;
-}
-
-.card {
-  background: #dff6ff;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-}
-
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card h3 {
-  padding: 15px;
-}
-
-/* BOOKING */
-.booking {
-  background: #ffd6e0;
-}
-
-.booking input, .booking select {
+nav {
+  text-align: center;
+  background: #ffffff;
   padding: 10px;
-  margin: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
 }
-
-.booking button {
-  padding: 12px 25px;
-  background: #8ecae6;
-  border: none;
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+.hero {
+  padding: 60px 20px;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 36px;
+}
+.button {
+  background: #ffb6c1;
   color: white;
-  border-radius: 25px;
-  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
 }
-
-.booking button:hover {
-  background: #6bb6d6;
+.section {
+  padding: 40px 20px;
+  background: white;
+  margin: 20px;
+  border-radius: 15px;
 }
-
-/* CONTACT */
-.contact input, .contact textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-
-/* FOOTER */
-footer {
-  background: #1a1f3c;
-  color: white;
+.footer {
   text-align: center;
   padding: 20px;
+  background: #ffffff;
 }
 </style>
-
-<script>
-function filterDestinations(region) {
-  let cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    if (region === "all" || card.classList.contains(region)) {
-      card.style.display = "block";
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-</script>
-
 </head>
-
 <body>
 
 <header>
-  <h2>FlyHigh</h2>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#destinations">Destinations</a>
-    <a href="#booking">Booking</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<h1>FlyHigh Travel</h1>
+<p>Explore the World with Us</p>
 </header>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div>
-    <h1>Fly Beyond Limits</h1>
-  </div>
-</section>
+<nav>
+<a href="#">Home</a>
+<a href="#">Destinations</a>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</nav>
 
-<!-- DESTINATIONS -->
-<section id="destinations" class="section">
-  <h2>Explore the World</h2>
+<div class="hero">
+<h2>Explore the World with FlyHigh</h2>
+<p>Your journey begins here</p>
+<a class="button" href="#">Find Your Trip</a>
+</div>
 
-  <div class="filters">
-    <button onclick="filterDestinations('all')">All</button>
-    <button onclick="filterDestinations('europe')">Europe</button>
-    <button onclick="filterDestinations('asia')">Asia</button>
-    <button onclick="filterDestinations('africa')">Africa</button>
-    <button onclick="filterDestinations('north-america')">North America</button>
-    <button onclick="filterDestinations('south-america')">South America</button>
-  </div>
+<div class="section">
+<h2>Popular Destinations</h2>
+<p>Dubai, Sharm El Sheikh, Greece, Italy, Cyprus, Georgia</p>
+</div>
 
-  <div class="cards">
+<div class="section">
+<h2>Services</h2>
+<p>Flight booking, hotel reservations, visa support, travel insurance</p>
+</div>
 
-    <div class="card europe">
-      <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg">
-      <h3>Paris</h3>
-    </div>
+<div class="section">
+<h2>Special Offers</h2>
+<p>Last minute deals and seasonal discounts available now</p>
+</div>
 
-    <div class="card asia">
-      <img src="https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg">
-      <h3>Maldives</h3>
-    </div>
-
-    <div class="card asia">
-      <img src="https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg">
-      <h3>Dubai</h3>
-    </div>
-
-    <div class="card africa">
-      <img src="https://images.pexels.com/photos/667200/pexels-photo-667200.jpeg">
-      <h3>Morocco</h3>
-    </div>
-
-    <div class="card north-america">
-      <img src="https://images.pexels.com/photos/208701/pexels-photo-208701.jpeg">
-      <h3>New York</h3>
-    </div>
-
-    <div class="card north-america">
-      <img src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg">
-      <h3>Canada</h3>
-    </div>
-
-    <div class="card europe">
-      <img src="https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg">
-      <h3>London</h3>
-    </div>
-
-    <div class="card south-america">
-      <img src="https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg">
-      <h3>Brazil</h3>
-    </div>
-
-  </div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking" class="section booking">
-  <h2>Book Your Trip</h2>
-  <form>
-    <input type="text" placeholder="Destination">
-    <input type="date">
-    <input type="number" placeholder="Guests">
-    <select>
-      <option>Select Package</option>
-      <option>Basic</option>
-      <option>Standard</option>
-      <option>Premium</option>
-    </select>
-    <button>Book Now</button>
-  </form>
-</section>
-
-<!-- VISA -->
-<section class="section" style="background:#dff6ff;">
-  <h2>Visa Support</h2>
-  <p style="max-width:700px;margin:auto;">
-    We provide full visa support for Armenian travelers including Europe, USA, UK, and Canada.
-  </p>
-</section>
-
-<!-- WHY US -->
-<section class="section" style="background:#ffd6e0;">
-  <h2>Why Choose Us</h2>
-  <div class="cards">
-    <div class="card"><h3>🌍 Global Travel</h3></div>
-    <div class="card"><h3>🛂 Visa Help</h3></div>
-    <div class="card"><h3>💼 Trusted</h3></div>
-    <div class="card"><h3>✨ Personalized</h3></div>
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="section">
-  <h2>Packages</h2>
-  <div class="cards">
-    <div class="card"><h3>Basic - $499</h3></div>
-    <div class="card"><h3>Standard - $899</h3></div>
-    <div class="card"><h3>Premium - $1499</h3></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section">
-  <h2>About</h2>
-  <p style="max-width:700px;margin:auto;">
-    FlyHigh is an Armenian travel company offering global trips with visa support and premium service.
-  </p>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section contact">
-  <h2>Contact</h2>
-  <input type="text" placeholder="Name">
-  <input type="email" placeholder="Email">
-  <textarea placeholder="Message"></textarea>
-</section>
-
-<footer>
-  <p>© 2026 FlyHigh Travel</p>
-</footer>
+<div class="footer">
+<p>Contact us: info@flyhigh.com</p>
+</div>
 
 </body>
 </html>
+```
+
